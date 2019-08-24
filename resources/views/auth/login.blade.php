@@ -6,7 +6,7 @@
             <div class="w-96 bg-blue-900 rounded-lg shadow-xl">
                 <div class="flex flex-col break-words rounded shadow-md ">
 
-                    <div class="font-semibold text-gray-700 py-3 px-6 mb-0">
+                    <div class="text-gray-700 py-3 px-6 mb-0">
                         <!-- {{ __('Login') }} -->
                         <img class="justify-center fill-content text-white w-16" src="assets/img/nccfpic.png">
                         <h1 class="text-white text-3xl pt-8">Welcome back</h1>

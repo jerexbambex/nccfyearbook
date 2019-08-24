@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Cloudder;
 
 class RegisterController extends Controller
 {
@@ -50,8 +51,19 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'surname' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'middlename' => ['required', 'string', 'max:255'],
+            'state_of_origin' => ['required', 'string', 'max:255'],
+            'school_attended' => ['required', 'string', 'max:255'],
+            'course_studied' => ['required', 'string', 'max:255'],
+            'post_held' => ['required', 'string', 'max:255'],
+            'quote' => ['required', 'string'],
+            'facebook_name' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
+            'hobbies' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'image' => ['mimes:jpeg,bmp,png', 'size:2048'],
         ]);
     }
 
@@ -63,10 +75,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $pic = $data->file('image');
+        $upload = Cloudder::upload($pic);
+
+        if($upload){
+            $picId = Cloudder::getPublicId();
+
+            return User::create([
+                'surname' => $data['surname'],
+                'firstname' => $data['firstname'],
+                'middlename' => $data['middlename'],
+                'state_of_origin' => $data['state_of_origin'],
+                'school_attended' => $data['school_attended'],
+                'course_studied' => $data['course_studied'],
+                'post_held' => $data['post_held'],
+                'quote' => $data['quote'],
+                'facebook_name' => $data['facebook_name'],
+                'phone_number' => $data['phone_number'],
+                'hobbies' => $data['hobbies'],
+                'image' => $picId,
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
     }
 }
