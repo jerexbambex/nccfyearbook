@@ -76,7 +76,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $pic = $data->file('image');
-        $upload = Cloudder::upload($pic);
+        $folder = 'nccf';
+        $quality = 'auto';
+        $upload = Cloudder::upload($file,null, $options = array(
+            'folder'   => $folder,
+            'timeout'  => 3600,
+            'quality'  => $quality,
+        ));
 
         if($upload){
             $picId = Cloudder::getPublicId();
