@@ -19,7 +19,7 @@
                         <h2 class="text-blue-300 pt-2">Enter your credentials below as you want it to appear in the yearbook</h2>
                     </div>
 
-                    <form class="w-full p-6 pt-8" method="POST" action="{{ route('register') }}">
+                    <form class="w-full p-6 pt-8" enctype="multipart/form-data" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="md:flex md:flex-around mx-auto">
                             <div class="relative flex flex-wrap mb-6 md:w-1/3 md:flex-around">

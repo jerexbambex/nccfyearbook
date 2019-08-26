@@ -7,22 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Cloudder;
+use App\Traits\CloudinaryUpload;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
+    use CloudinaryUpload;
 
     /**
      * Where to redirect users after registration.
@@ -75,28 +65,46 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $pic = $data->file('image');
-        $upload = Cloudder::upload($pic);
-
-        if($upload){
-            $picId = Cloudder::getPublicId();
-
-            return User::create([
-                'surname' => $data['surname'],
-                'firstname' => $data['firstname'],
-                'middlename' => $data['middlename'],
-                'state_of_origin' => $data['state_of_origin'],
-                'school_attended' => $data['school_attended'],
-                'course_studied' => $data['course_studied'],
-                'post_held' => $data['post_held'],
-                'quote' => $data['quote'],
-                'facebook_name' => $data['facebook_name'],
-                'phone_number' => $data['phone_number'],
-                'hobbies' => $data['hobbies'],
-                'image' => $picId,
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
+        /**
+         * From the view try to make sure the image data 
+         * is sent, so this logic below checks for that,
+         * i dont understand the designs but this code 
+         * works
+         */
+        if (array_key_exists('image', $data)){
+            dd('has image');
+        }else {
+            dd('no image');
         }
+
+        $user = User::create([
+                    'surname' => $data['surname'],
+                    'firstname' => $data['firstname'],
+                    'middlename' => $data['middlename'],
+                    'state_of_origin' => $data['state_of_origin'],
+                    'school_attended' => $data['school_attended'],
+                    'course_studied' => $data['course_studied'],
+                    'post_held' => $data['post_held'],
+                    'quote' => $data['quote'],
+                    'facebook_name' => $data['facebook_name'],
+                    'phone_number' => $data['phone_number'],
+                    'hobbies' => $data['hobbies'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                ]);
+
+        if (array_key_exists('image', $data)){
+            
+            $imageData = $this->upload($data['image'],'nccf-reg', 360,null);
+            $userImage = [
+                'public_id' => $imageData['public_id'],
+                'secure_url' => $imageData['secure_url']
+            ];
+
+            $user->image = json_encode($userImage);
+            $user->save();
+        }
+
+        return $user;
     }
 }
