@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'hobbies' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image' => ['mimes:jpeg,bmp,png,jpg', 'size:2048'],
+            'image' => ['mimes:jpeg,bmp,png,jpg', 'max:2048'],
         ]);
     }
 
@@ -81,11 +81,11 @@ class RegisterController extends Controller
          * i dont understand the designs but this code
          * works
          */
-        if (array_key_exists('image', $data)){
-            dd('has image');
-        }else {
-            dd('no image');
-        }
+        // if (array_key_exists('image', $data)){
+        //     dd('has image');
+        // }else {
+        //     dd('no image');
+        // }
 
         $user = User::create([
                     'surname' => $data['surname'],

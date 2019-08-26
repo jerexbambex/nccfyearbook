@@ -229,6 +229,12 @@
                                 </svg> -->
                                 <span class="mt-2 text-base leading-normal">Select a file</span>
                                 <input type='file' class="" name="image" />
+
+                                 @if ($errors->has('image'))
+                                    <p class="text-red-500 text-xs italic mt-4">
+                                        {{ $errors->first('image') }}
+                                    </p>
+                                @endif
                             </label>
                         </div>
 
