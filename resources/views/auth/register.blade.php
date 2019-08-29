@@ -184,18 +184,34 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap mb-6">
-                            <label for="email" class="uppercase block text-blue-500 text-xs font-bold mb-2 absolute pl-3 pt-2">
-                                E-Mail Address:
-                            </label>
+                        <div class="md:flex md:flex-around mx-auto">
+                            <div class="flex flex-wrap mb-6 md:w-1/2 lg:flex-around">
+                                <label for="email" class="uppercase block text-blue-500 text-xs font-bold mb-2 absolute pl-3 pt-2">
+                                    E-Mail Address:
+                                </label>
 
-                            <input id="email" type="email" class="bg-blue-800 p-3 pt-8 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:bg-blue-700{{ $errors->has('email') ? ' border-red-500' : '' }}" name="email" value="{{ old('email') }}" required placeholder="your@email.com">
+                                <input id="email" type="email" class="bg-blue-800 p-3 pt-8 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:bg-blue-700{{ $errors->has('email') ? ' border-red-500' : '' }}" name="email" value="{{ old('email') }}" required placeholder="your@email.com">
 
-                            @if ($errors->has('email'))
-                                <p class="text-red-500 text-xs italic mt-4">
-                                    {{ $errors->first('email') }}
-                                </p>
-                            @endif
+                                @if ($errors->has('email'))
+                                    <p class="text-red-500 text-xs italic mt-4">
+                                        {{ $errors->first('email') }}
+                                    </p>
+                                @endif
+                            </div>
+
+                            <div class="flex flex-wrap mb-6 md:w-1/2 lg:flex-around md:ml-2">
+                                <label for="birthdate" class="uppercase block text-blue-500 text-xs font-bold mb-2 absolute pl-3 pt-2">
+                                    Date of Birth:
+                                </label>
+
+                                <input id="birthdate" type="date" class="bg-blue-800 p-3 pt-8 shadow appearance-none rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:bg-blue-700{{ $errors->has('birthdate') ? ' border-red-500' : '' }}" name="birthdate" value="{{ old('birthdate') }}" required placeholder="dd/mm/yyyy">
+
+                                @if ($errors->has('birthdate'))
+                                    <p class="text-red-500 text-xs italic mt-4">
+                                        {{ $errors->first('birthdate') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
 
                         <div class="md:flex md:flex-around mx-auto">

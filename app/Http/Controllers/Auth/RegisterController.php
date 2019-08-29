@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'image' => ['mimes:jpeg,bmp,png,jpg', 'max:2048'],
+            'birthdate' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -101,6 +102,7 @@ class RegisterController extends Controller
                     'hobbies' => $data['hobbies'],
                     'email' => $data['email'],
                     'password' => Hash::make($data['password']),
+                    'birthdate' => $data['birthdate'],
                 ]);
 
         if (array_key_exists('image', $data)){
