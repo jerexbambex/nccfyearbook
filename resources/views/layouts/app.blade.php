@@ -45,6 +45,9 @@
         </nav>
 
         @yield('content')
+        <div class="text-gray-600 text-center text-xs pt-8 py-4">
+            Powered by Oluwatosin & Believe
+        </div>
     </div>
 
     <!-- Scripts -->
