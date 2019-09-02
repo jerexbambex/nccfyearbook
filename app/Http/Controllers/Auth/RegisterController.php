@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'hobbies' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image' => ['mimes:jpeg,bmp,png,jpg', 'max:2048'],
+            'image' => ['required', 'mimes:jpeg,bmp,png,jpg', 'max:2048'],
             'birthdate' => ['required', 'string', 'max:255'],
         ]);
     }
