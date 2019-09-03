@@ -9,8 +9,8 @@
                     <div class="text-gray-700 py-3 px-6 mb-0">
                         <!-- {{ __('Login') }} -->
                         <img class="justify-center fill-content text-white w-16" src="assets/img/nccfpic.png">
-                        <h1 class="text-white text-3xl pt-8">Welcome back</h1>
-                        <h2 class="text-blue-300">Enter your credentials below</h2>
+                        <h1 class="text-white text-2xl pt-8">Welcome back</h1>
+                        <h2 class="text-blue-300 text-sm">Enter your credentials below</h2>
                     </div>
 
                     <form class="w-full p-6 pt-8" method="POST" action="{{ route('login') }}">
