@@ -12,8 +12,12 @@
 
             <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md mb-8">
 
-                <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
+                <div class="flex font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
                     Welcome {{ $user->firstname }}
+
+                     <a class="mx-auto text-right" href="{{ route('dashboard') }}">
+                         <button class="rounded bg-blue-500 hover:bg-blue-700 text-gray-100 py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center">Dashboard</button>
+                     </a>
                 </div>
 
                 <div class="w-full p-6 text-center items-center">
