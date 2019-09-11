@@ -32,9 +32,9 @@
         <div class="flex flex-col justify-around h-full">
             <div>
                 <img class="flex-wrap mx-auto w-20" src="assets/img/nccfpic.png">
-                <h2 class="text-center mx-auto text-2xl font-semibold pt-3 justify-center text-gray-700">Nigeria Christian Corpers' Fellowship</h2>
+                <h2 class="text-center mx-auto text-2xl font-normal pt-3 justify-center text-gray-700">Nigeria Christian Corpers' Fellowship</h2>
                 <h3 class="text-center mx-auto text-xl pt-2 justify-center mb-8 text-gray-700">Imo State Chapter</h3>
-                <h2 class="text-gray-600 text-center font-light tracking-wider text-5xl mb-6">
+                <h2 class="text-gray-600 text-center font-light tracking-wider text-5xl mb-6 font-semibold">
                     {{ config('app.name', 'Laravel') }}
                 </h2>
                 <ul class=" flex justify-center list-reset mx-auto">
