@@ -32,7 +32,7 @@
 
                     <div class="flex pt-4 text-left py-2 items-center">
                         <div class="flex-wrap w-1/3 font-semibold text-right">Full Name:</div>
-                        <div class="flex-wrap text-left pl-2">{{ $user->firstname }} {{ $user->middlename }} {{ $user->surname }}</div>
+                        <div class="flex-wrap text-left pl-2">{{ strtolower($user->firstname) }} {{ strtolower($user->middlename) }} {{ strtoupper($user->surname) }}</div>
                     </div>
 
                     <div class="flex pt-4 text-left py-2 items-center">

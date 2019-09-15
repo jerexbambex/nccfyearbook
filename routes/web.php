@@ -23,6 +23,6 @@ Route::prefix('admin')->group(function () {
 	Route::get('/home', 'AdminController@index')->name('dashboard');
 
 	// User's Profile
-	Route::get('/user/{firstname}', 'AdminController@getProfile')->name('user.profile');
+	Route::get('/user/{id}', 'AdminController@getProfile')->name('user.profile');
 });
 

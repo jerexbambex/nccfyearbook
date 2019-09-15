@@ -22,9 +22,12 @@
 								<div class="text-gray-600 text-base text-xs pt-3">
 								{{ $user->phone_number }}
 								</div>
+								<div class="text-gray-600 text-base text-xs pt-3">
+									{{ $user->created_at->diffForHumans() }}
+								</div>
 							</div>
 							<div class="px-6 py-4">
-								<a href="{{ route('user.profile', ['firstname' => $user->firstname]) }}">
+								<a href="{{ route('user.profile', ['id' => $user->id]) }}">
 									<button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
 										View
 									</button>

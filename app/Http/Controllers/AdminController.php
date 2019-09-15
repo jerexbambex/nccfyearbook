@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Carbon;
 
 class AdminController extends Controller
 {
@@ -94,8 +95,8 @@ class AdminController extends Controller
     }
 
     // Get User's Profile
-    public function getProfile ($firstname) {
-        $user = User::where('firstname', $firstname)->first();
+    public function getProfile ($id) {
+        $user = User::where('id', $id)->first();
         return view('admin.user')
             ->with('user', $user);
     }
